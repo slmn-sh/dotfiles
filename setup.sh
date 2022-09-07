@@ -4,12 +4,15 @@ if [[ uname == 'Darwin' ]]; then
     echo "Installing homebrew"
     /bin/bash -c "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/HEAD/install.sh)"
     echo "Brewing packages"
-    brew install python npm nodejs neovim fd ripgrep
+    brew install python npm nodejs neovim fd ripgrep stow
 else
     echo "Installinng packages"
-    sudo pacman -S --noconfirm zsh npm nodejs neovim fd ripgrep
+    sudo pacman -S --noconfirm zsh npm nodejs neovim fd ripgrep stow
     chsh -s $(which zsh)
 fi
+
+echo "Creating symlinks"
+stow -d ~/dotfiles -t ~/.config/ config --ignore=.DS_Store
 
 echo "Installing oh-my-zsh"
 sh -c "$(curl -fsSL https://raw.githubusercontent.com/ohmyzsh/ohmyzsh/master/tools/install.sh)" "" --unattended

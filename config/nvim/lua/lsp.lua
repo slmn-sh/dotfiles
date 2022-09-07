@@ -4,6 +4,7 @@ local lspconfig = require("lspconfig")
 local mason_lsp = require("mason-lspconfig")
 local luasnip = require("luasnip")
 local luadev = require("lua-dev").setup({})
+local null_ls = require("null-ls")
 
 local cmp_kinds = {
     Text = '',
@@ -35,6 +36,7 @@ local cmp_kinds = {
 
 local capabilities = require("cmp_nvim_lsp").update_capabilities(vim.lsp.protocol.make_client_capabilities())
 
+
 local lsp_defaults = {
     flags = {
         debounce_text_changes = 150,
@@ -53,13 +55,14 @@ lspconfig.util.default_config = vim.tbl_deep_extend(
 
 
 require("mason").setup()
-
 mason_lsp.setup({
     automatic_installation = true,
 })
 mason_lsp.setup_handlers({
     function(server_name)
-        lspconfig[server_name].setup {}
+        lspconfig[server_name].setup {
+            capabilities = capabilities
+        }
     end,
     ["rust_analyzer"] = function()
         require("rust-tools").setup {}
@@ -73,10 +76,42 @@ mason_lsp.setup_handlers({
                 ['window/showMessageRequest'] = function(_, result, params) return result end
             }
         })
-    end
+    end,
+    ["yamlls"] = function()
+        lspconfig.yamlls.setup({
+            settings = {
+                yaml = {
+                    schemas = require('schemastore').json.schemas(),
+                }
+            }
+        })
+    end,
+    ["jsonls"] = function()
+        lspconfig.jsonls.setup({
+            settings = {
+                json = {
+                    schemas = require('schemastore').json.schemas(),
+                    validate = { enable = true }
+                }
+            }
+        })
+    end,
+    ["sqls"] = function()
+        lspconfig.sqls.setup({
+            settings = {
+                sqls = {
+                    connections = {
+                        {
+                            driver = 'postgresql',
+                            dataSourceName = "postgresql://postgres:test1234@localhost:5432/mydb"
+                        }
+                    }
+                }
+            }
+        })
+    end,
 })
 
-require("luasnip.loaders.from_vscode").lazy_load()
 cmp.setup({
     snippet = {
         expand = function(args)
@@ -92,7 +127,7 @@ cmp.setup({
         ["<Tab>"] = cmp.mapping(function(fallback)
             if cmp.visible() then
                 cmp.select_next_item()
-            elseif luasnip.expand_or_jumpable() then
+            elseif luasnip.expand_or_locally_jumpable() then
                 luasnip.expand_or_jump()
             else
                 fallback()
@@ -124,7 +159,7 @@ cmp.setup({
         end
     },
     experimental = {
-        ghost_text = true
+        ghost_text = true,
     }
 })
 
@@ -207,9 +242,6 @@ vim.api.nvim_create_autocmd(
     { pattern = { "*.rs" }, command = "RustFmt" }
 )
 
-require("nvim-autopairs").setup { check_ts = true }
-require('nvim-ts-autotag').setup()
-
 cmp.event:on(
     'confirm_done',
     cmp_autopairs.on_confirm_done()
@@ -220,6 +252,8 @@ require("nvim-tree").setup({
     hijack_unnamed_buffer_when_opening = true,
     view = {
         adaptive_size = true,
+        side = "right",
+        hide_root_folder = true,
         mappings = {
             list = {
                 { key = "l", action = "edit" },
@@ -235,5 +269,29 @@ require("nvim-tree").setup({
         custom = {
             ".git"
         }
+    },
+    renderer = {
+        highlight_opened_files = "all"
+    }
+})
+
+require("luasnip.loaders.from_vscode").lazy_load()
+require("nvim-autopairs").setup { check_ts = true }
+require('nvim-ts-autotag').setup()
+
+null_ls.setup({
+    sources = {
+        null_ls.builtins.diagnostics.gitlint.with({
+            extra_args = { "--contrib=contrib-title-conventional-commits" }
+        })
+    },
+})
+
+require("gitsigns").setup({
+    signcolumn = false,
+    numhl = true,
+    current_line_blame = true,
+    current_line_blame_opts = {
+        delay = 300
     }
 })

@@ -18,3 +18,14 @@ vim.o.smartindent = true
 
 vim.o.clipboard = "unnamedplus"
 vim.o.hlsearch = false
+
+vim.o.foldenable = false
+vim.o.foldmethod = 'expr'
+vim.o.foldexpr = "nvim_treesitter#foldexpr()"
+
+vim.o.updatetime = 100
+vim.wo.signcolumn = 'yes'
+vim.o.incsearch = false
+
+vim.o.splitbelow = true
+vim.o.splitright = true
