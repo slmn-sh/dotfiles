@@ -73,7 +73,7 @@ mason_lsp.setup_handlers({
     ["eslint"] = function()
         lspconfig.eslint.setup({
             handlers = {
-                ['window/showMessageRequest'] = function(_, result, params) return result end
+                ['window/showMessageRequest'] = function(_, result, _) return result end
             }
         })
     end,
