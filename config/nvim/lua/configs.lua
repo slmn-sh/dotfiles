@@ -29,3 +29,5 @@ vim.o.incsearch = false
 
 vim.o.splitbelow = true
 vim.o.splitright = true
+
+vim.g.mapleader = ' '
