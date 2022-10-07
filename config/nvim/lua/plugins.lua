@@ -1,4 +1,7 @@
-return require("packer").startup(function (use)
+local ok, packer = pcall(require, "packer")
+
+if ok then
+  return packer.startup(function (use)
 
     use 'wbthomason/packer.nvim'
 
@@ -22,7 +25,7 @@ return require("packer").startup(function (use)
     use 'simrat39/rust-tools.nvim'
 
     use "windwp/nvim-autopairs"
-  
+
     use "windwp/nvim-ts-autotag"
 
     use { 'kyazdani42/nvim-tree.lua',
@@ -63,6 +66,7 @@ return require("packer").startup(function (use)
     use "joshdick/onedark.vim"
     use 'mfussenegger/nvim-dap'
 
-end)
+    use 'fladson/vim-kitty'
 
-
+  end)
+end

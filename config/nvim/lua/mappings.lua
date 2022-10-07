@@ -1,11 +1,11 @@
 local opts = { noremap = true, silent = true }
 
-vim.api.nvim_set_keymap("n", "<leader>p", ":Telescope find_files<CR>", opts)
-vim.api.nvim_set_keymap("n", "<leader>g", ":Telescope live_grep<CR>", opts)
+vim.api.nvim_set_keymap("n", "<leader>l", ":Telescope find_files<CR>", opts)
+vim.api.nvim_set_keymap("n", "<leader>fg", ":Telescope live_grep<CR>", opts)
 
-local os = vim.loop.os_uname().sysname
+local comment_map = vim.loop.os_uname().sysname == "Darwin" and "<C-/>" or "<C-_>"
 
-vim.api.nvim_set_keymap("n", (os == 'Darwin' and "<C-/>" or "<C-_>" ), ":call nerdcommenter#Comment('n', 'toggle')<CR>", opts)
-vim.api.nvim_set_keymap("v", (os == 'Darwin' and "<C-/>" or "<C-_>" ), ":call nerdcommenter#Comment('x', 'toggle')<CR>", opts)
+vim.api.nvim_set_keymap("n", comment_map, ":call nerdcommenter#Comment('n', 'toggle')<CR>", opts)
+vim.api.nvim_set_keymap("v", comment_map, ":call nerdcommenter#Comment('x', 'toggle')<CR>", opts)
 
-vim.api.nvim_set_keymap("n", "<leader>f", ":NvimTreeToggle<CR>", opts)
+vim.api.nvim_set_keymap("n", "<leader>b", ":NvimTreeToggle<CR>", opts)
