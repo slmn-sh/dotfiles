@@ -73,15 +73,6 @@ local function mode()
   return string.format(" %s ", modes[current_mode]):upper()
 end
 
-local function filepath()
-  local fpath = vim.fn.fnamemodify(vim.fn.expand "%", ":~:.:h")
-  if fpath == "" or fpath == "." then
-      return " "
-  end
-
-  return string.format(" %%<%s/", fpath)
-end
-
 local function filename()
   local fname = vim.fn.expand "%:t"
   if fname == "" then
@@ -144,7 +135,6 @@ Statusline.active = function()
     "%#Statusline#",
     mode(),
     "%#Normal# ",
-    filepath(),
     filename(),
     vcs(),
     "%#Normal# ",
