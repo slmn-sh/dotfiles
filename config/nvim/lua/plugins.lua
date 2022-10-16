@@ -19,7 +19,7 @@ if ok then
     use "hrsh7th/cmp-git"
     use "hrsh7th/cmp-cmdline"
     use "hrsh7th/cmp-nvim-lua"
-    use "folke/lua-dev.nvim"
+    use "folke/neodev.nvim"
     use "b0o/schemastore.nvim"
 
     use 'simrat39/rust-tools.nvim'

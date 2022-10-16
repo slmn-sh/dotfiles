@@ -3,6 +3,7 @@ local mason_lsp_ok, mason_lsp = pcall(require, "mason-lspconfig")
 local lspconfig_ok, lspconfig = pcall(require, "lspconfig")
 local schemastore_ok, schemastore = pcall(require, "schemastore")
 local cmp_nvim_lsp_ok, cmp_nvim_lsp = pcall(require, "cmp_nvim_lsp")
+local neodev_ok, neodev = pcall(require, "neodev")
 
 local schemas = {}
 local capabilities = {}
@@ -18,7 +19,7 @@ if schemastore_ok then
 end
 
 if cmp_nvim_lsp_ok then
-    capabilities = cmp_nvim_lsp.update_capabilities(vim.lsp.protocol.make_client_capabilities())
+    capabilities = cmp_nvim_lsp.default_capabilities(vim.lsp.protocol.make_client_capabilities())
 end
 
 local lsp_defaults = {
@@ -34,6 +35,10 @@ lspconfig.util.default_config = vim.tbl_deep_extend(
     lsp_defaults
 ) or {}
 
+if neodev_ok then
+    neodev.setup({})
+end
+
 if mason_lsp_ok and lspconfig_ok then
     mason_lsp.setup({
         automatic_installation = true,
@@ -46,12 +51,15 @@ if mason_lsp_ok and lspconfig_ok then
             require("rust-tools").setup {}
         end,
         ["sumneko_lua"] = function()
-            local ok, lua_dev = pcall(require, "lua-dev")
-            if ok then
-                lspconfig.sumneko_lua.setup(lua_dev.setup({}))
-            else
-                lspconfig.sumneko_lua.setup()
-            end
+            lspconfig.sumneko_lua.setup({
+                settings = {
+                    Lua = {
+                        completion = {
+                            callSnippet = "Replace"
+                        }
+                    }
+                }
+            })
         end,
         ["eslint"] = function()
             lspconfig.eslint.setup({
