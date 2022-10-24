@@ -52,8 +52,6 @@ if ok then
 
     use "preservim/nerdcommenter"
 
-    use { "prettier/vim-prettier", run = "yarn install --frozen-lockfile --production" }
-
     use "tpope/vim-sleuth"
 
     use "lewis6991/gitsigns.nvim"

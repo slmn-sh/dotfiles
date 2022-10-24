@@ -9,3 +9,6 @@ vim.api.nvim_set_keymap("n", comment_map, ":call nerdcommenter#Comment('n', 'tog
 vim.api.nvim_set_keymap("v", comment_map, ":call nerdcommenter#Comment('x', 'toggle')<CR>", opts)
 
 vim.api.nvim_set_keymap("n", "<leader>b", ":NvimTreeToggle<CR>", opts)
+
+vim.api.nvim_set_keymap("n", "<leader>p", ":lua vim.lsp.buf.format({ name = 'null-ls' })<CR>", opts)
+vim.api.nvim_set_keymap("v", "<leader>p", ":lua vim.lsp.buf.format({ name = 'null-ls' } )<CR>", opts)
