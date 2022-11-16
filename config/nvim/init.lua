@@ -5,4 +5,4 @@ require("variables")
 require("mappings")
 require("treesitter")
 
-vim.cmd("colorscheme sonokai")
+vim.cmd("colorscheme carbonfox")

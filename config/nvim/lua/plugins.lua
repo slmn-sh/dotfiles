@@ -63,6 +63,7 @@ if ok then
     use "sainnhe/gruvbox-material"
     use "joshdick/onedark.vim"
     use 'mfussenegger/nvim-dap'
+    use "EdenEast/nightfox.nvim"
 
     use 'fladson/vim-kitty'
 

@@ -4,10 +4,10 @@ if [[ uname == 'Darwin' ]]; then
     echo "Installing homebrew"
     /bin/bash -c "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/HEAD/install.sh)"
     echo "Brewing packages"
-    brew install python npm nodejs neovim fd ripgrep stow
+    brew install python npm nodejs neovim fd ripgrep stow font-fira-code-nerd-font
 else
-    echo "Installinng packages"
-    sudo pacman -S --noconfirm zsh npm nodejs neovim fd ripgrep stow
+    echo "Installing packages"
+    sudo pacman -S --noconfirm zsh npm nodejs neovim fd ripgrep stow ttf-firacode-nerd alacritty
     chsh -s $(which zsh)
 fi
 
@@ -26,8 +26,3 @@ do
     echo "${PLUGIN##*/}"
     git clone "https://github.com/${PLUGIN}.git" "${ZSH_CUSTOM:-~/.oh-my-zsh/custom}plugins/${PLUGIN##*/}"
 done
-
-echo "Installing codicon fonts (for vim icons)"
-mkdir -p ~/.local/share/fonts/Microsoft/TrueType
-curl -fsSL "https://microsoft.github.io/vscode-codicons/dist/codicon.ttf" -o ~/.local/share/fonts/Microsoft/TrueType/codicon_Regular.ttf
-fc-cache -f

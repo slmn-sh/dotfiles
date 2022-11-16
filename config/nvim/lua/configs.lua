@@ -33,3 +33,6 @@ vim.o.splitright = true
 vim.g.mapleader = ' '
 
 vim.o.mouse = ''
+
+-- NetRW configs
+vim.g.netrw_banner = false

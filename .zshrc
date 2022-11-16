@@ -78,10 +78,10 @@ plugins=(
 	compleat
 	transfer
 	archlinux
+	nvm
 	gitignore
 	zsh-autosuggestions
 	zsh-syntax-highlighting
-	# autoswitch_virtualenv
 )
 
 
@@ -117,3 +117,4 @@ alias vim="nvim"
 alias cls="clear"
 # export JAVA_HOME=/usr/lib/jvm/java-11-openjdk
 PATH=$PATH:/usr/local/sbin:/usr/local/bin:/usr/bin:/usr/lib/jvm/default/bin:/usr/bin/site_perl:/usr/bin/vendor_perl:/usr/bin/core_perl:/home/salmannotkhan/.local/bin
+eval "$(starship init zsh)"
