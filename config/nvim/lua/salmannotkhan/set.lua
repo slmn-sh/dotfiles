@@ -9,30 +9,21 @@ vim.o.relativenumber = true
 vim.o.cursorline = true
 
 vim.o.termguicolors = true
-vim.o.guifont = "codicon"
 vim.o.encoding = "utf-8"
 
-vim.o.completeopt = "menu,menuone,noselect"
 vim.o.autoindent = true
 vim.o.smartindent = true
 
-vim.o.clipboard = "unnamedplus"
 vim.o.hlsearch = false
 
-vim.o.foldenable = false
-vim.o.foldmethod = 'expr'
-vim.o.foldexpr = "nvim_treesitter#foldexpr()"
-
-vim.o.updatetime = 100
+vim.o.updatetime = 50
 vim.wo.signcolumn = 'yes'
-vim.o.incsearch = false
-
+vim.o.incsearch = true
 vim.o.splitbelow = true
 vim.o.splitright = true
-
 vim.g.mapleader = ' '
-
 vim.o.mouse = ''
+vim.o.guicursor = ''
 
 -- NetRW configs
 vim.g.netrw_banner = false
