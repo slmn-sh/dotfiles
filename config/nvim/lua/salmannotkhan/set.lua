@@ -27,3 +27,6 @@ vim.o.guicursor = ''
 
 -- NetRW configs
 vim.g.netrw_banner = false
+
+-- Clipboard
+vim.o.clipboard = "unnamedplus"

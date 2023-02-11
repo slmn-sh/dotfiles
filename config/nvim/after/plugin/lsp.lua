@@ -9,11 +9,11 @@ local cmp_mappings = lsp.defaults.cmp_mappings({
 lsp.preset("recommended")
 lsp.setup_nvim_cmp({
     sources = {
+        { name = 'nvim_lsp' },
         { name = 'path' },
         { name = 'git' },
         { name = "luasnip" },
-        { name = 'nvim_lsp', keyword_length = 3 },
-        { name = 'buffer', keyword_length = 3 },
+        { name = 'buffer' },
     },
     mapping = cmp_mappings
 })
