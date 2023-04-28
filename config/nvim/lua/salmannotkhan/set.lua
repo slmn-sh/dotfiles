@@ -22,7 +22,6 @@ vim.o.incsearch = true
 vim.o.splitbelow = true
 vim.o.splitright = true
 vim.g.mapleader = ' '
-vim.o.mouse = ''
 vim.o.guicursor = ''
 
 -- NetRW configs

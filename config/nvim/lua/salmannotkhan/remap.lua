@@ -1,2 +1,7 @@
 vim.g.mapleader = " "
-vim.keymap.set("n", "<leader>fm", vim.cmd.Ex)
+
+vim.api.nvim_set_keymap("n", "<leader>fm", ":NvimTreeToggle<cr>" ,{silent = true, noremap = true})
+vim.api.nvim_set_keymap("n", "<C-h", ":TmuxNavigateLeft<cr>" ,{silent = true, noremap = true})
+vim.api.nvim_set_keymap("n", "<C-l", ":TmuxNavigateRight<cr>" ,{silent = true, noremap = true})
+vim.api.nvim_set_keymap("n", "<C-j", ":TmuxNavigateDown<cr>" ,{silent = true, noremap = true})
+vim.api.nvim_set_keymap("n", "<C-k", ":TmuxNavigateUp<cr>" ,{silent = true, noremap = true})

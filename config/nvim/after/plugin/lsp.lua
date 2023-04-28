@@ -13,20 +13,13 @@ lsp.setup_nvim_cmp({
         { name = 'path' },
         { name = 'git' },
         { name = "luasnip" },
-        { name = 'buffer' },
+        { name = 'buffer', keyword_length = 2 },
     },
     mapping = cmp_mappings
 })
 lsp.configure("eslint", {
     handlers = {
         ['window/showMessageRequest'] = function(_, result, _) return result end
-    }
-})
-lsp.configure("tailwindcss", {
-    settings = {
-        tailwindCSS = {
-            classAttributes = { "class", "className", "ngClass", "class:list" }
-        }
     }
 })
 lsp.configure("jsonls", {
@@ -55,4 +48,4 @@ vim.diagnostic.config({
     float = true,
 })
 
-vim.keymap.set("n", "<leader>p", vim.cmd.LspZeroFormat)
+vim.keymap.set("n", "<leader>p", vim.lsp.buf.format)

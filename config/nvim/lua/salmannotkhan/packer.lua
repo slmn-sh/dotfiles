@@ -47,4 +47,13 @@ return require("packer").startup(function(use)
 
     use("lewis6991/gitsigns.nvim")
     use("b0o/schemastore.nvim")
+
+    use {
+        "nvim-tree/nvim-tree.lua",
+        requires = {
+            { "nvim-tree/nvim-web-devicons" }
+        }
+    }
+
+    use "christoomey/vim-tmux-navigator"
 end)
