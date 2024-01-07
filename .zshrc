@@ -1,7 +1,9 @@
-export ZSH="/Users/salmanshaikh/.oh-my-zsh"
+export ZSH="/Users/salmannotkhan/.oh-my-zsh"
 
 ZSH_THEME="robbyrussell"
 ENABLE_CORRECTION="true"
+export NVM_LAZY_LOAD=true
+export NVM_COMPLETION=true
 plugins=(
 	z
 	git
@@ -9,39 +11,45 @@ plugins=(
 	python
 	compleat
 	transfer
-	archlinux
 	nvm
+	macos
 	gitignore
 	vi-mode
 	zsh-autosuggestions
 	zsh-syntax-highlighting
+	evalcache
 )
 
 
 source $ZSH/oh-my-zsh.sh
 
-if [[ -n $SSH_CONNECTION ]]; then
-  export EDITOR='nvim'
-else
-  export EDITOR='nvim'
-fi
+export EDITOR='nvim'
 
 alias vim="nvim"
 alias cls="clear"
+alias start="~/sessionizer.sh"
 PATH=$PATH:/usr/local/sbin:/usr/local/bin:/usr/bin:/usr/lib/jvm/default/bin:/usr/bin/site_perl:/usr/bin/vendor_perl:/usr/bin/core_perl:/home/salmannotkhan/.local/bin
-eval "$(starship init zsh)"
 export NVM_HOMEBREW=$(brew --prefix nvm)
 zstyle ':omz:plugins:nvm' silent-autoload yes
+
+_evalcache starship init zsh
+_evalcache pyenv init -
+_evalcache pyenv virtualenv-init -
 
 nn ()
 {
   if [[ -e .node-version ]]; then
     nvm use $(cat .node-version)
   elif [[ -e .nvmrc ]]; then
-    nvm use $(cat .nvmrc)
+    nvm use
   fi
 }
 add-zsh-hook chpwd nn
 nn
 
-source $HOME/.urw-tunnel
+# bun completions
+[ -s "/Users/salmannotkhan/.bun/_bun" ] && source "/Users/salmannotkhan/.bun/_bun"
+
+# bun
+export BUN_INSTALL="$HOME/.bun"
+export PATH="$BUN_INSTALL/bin:$PATH"

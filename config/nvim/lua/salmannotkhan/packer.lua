@@ -1,9 +1,9 @@
 vim.cmd [[packadd packer.nvim]]
 
 return require("packer").startup(function(use)
-    use("wbthomason/packer.nvim")
+    use "wbthomason/packer.nvim"
     use {
-        "nvim-telescope/telescope.nvim", tag = "0.1.0",
+        "nvim-telescope/telescope.nvim", tag = "0.1.4",
         requires = { { "nvim-lua/plenary.nvim" } }
     }
     use {
@@ -13,8 +13,8 @@ return require("packer").startup(function(use)
     use {
         "nvim-treesitter/nvim-treesitter", run = ":TSUpdate"
     }
-    use("nvim-treesitter/nvim-treesitter-context")
-    use("mbbill/undotree")
+    use "nvim-treesitter/nvim-treesitter-context"
+    use "mbbill/undotree"
     use {
         "VonHeikemen/lsp-zero.nvim",
         requires = {
@@ -42,11 +42,6 @@ return require("packer").startup(function(use)
         "numToStr/Comment.nvim",
         config = function() require("Comment").setup() end
     }
-    use "jose-elias-alvarez/null-ls.nvim"
-    use "tpope/vim-sleuth"
-
-    use("lewis6991/gitsigns.nvim")
-    use("b0o/schemastore.nvim")
 
     use {
         "nvim-tree/nvim-tree.lua",
@@ -54,6 +49,11 @@ return require("packer").startup(function(use)
             { "nvim-tree/nvim-web-devicons" }
         }
     }
+    use "jose-elias-alvarez/null-ls.nvim"
+    use "tpope/vim-sleuth"
+
+    use "lewis6991/gitsigns.nvim"
+    use "b0o/schemastore.nvim"
 
     use "christoomey/vim-tmux-navigator"
 end)

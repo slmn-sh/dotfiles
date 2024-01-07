@@ -1,9 +1,11 @@
+require("luasnip.loaders.from_vscode").lazy_load()
 local lsp = require("lsp-zero")
 local cmp = require('cmp')
 
 local cmp_mappings = lsp.defaults.cmp_mappings({
     ['<C-Space>'] = cmp.mapping.complete(),
     ['<C-e>'] = cmp.mapping.abort(),
+    ['<CR>'] = cmp.mapping.confirm({select = true}),
 })
 
 lsp.preset("recommended")

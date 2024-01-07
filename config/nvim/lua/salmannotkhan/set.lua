@@ -14,7 +14,7 @@ vim.o.encoding = "utf-8"
 vim.o.autoindent = true
 vim.o.smartindent = true
 
-vim.o.hlsearch = false
+vim.o.hlsearch = true
 
 vim.o.updatetime = 50
 vim.wo.signcolumn = 'yes'
@@ -29,3 +29,7 @@ vim.g.netrw_banner = false
 
 -- Clipboard
 vim.o.clipboard = "unnamedplus"
+
+-- Spell Check
+vim.o.spell = true
+vim.o.spelllang = 'en_us'
