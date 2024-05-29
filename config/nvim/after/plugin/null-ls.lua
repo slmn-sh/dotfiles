@@ -10,5 +10,6 @@ require("null-ls").setup({
         builtins.diagnostics.gitlint.with({
             extra_args = { "--contrib=contrib-title-conventional-commits" }
         }),
+        builtins.formatting.djlint
     },
 })

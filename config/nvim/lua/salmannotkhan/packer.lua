@@ -6,9 +6,20 @@ return require("packer").startup(function(use)
         "nvim-telescope/telescope.nvim", tag = "0.1.4",
         requires = { { "nvim-lua/plenary.nvim" } }
     }
+    use "jiangmiao/auto-pairs"
+    use { "EdenEast/nightfox.nvim", config = function()
+        vim.cmd [[ colorscheme carbonfox ]]
+    end }
     use {
-        "EdenEast/nightfox.nvim",
-        config = function() vim.cmd("colorscheme carbonfox") end
+        "cormacrelf/dark-notify",
+        config = function()
+            require('dark_notify').run({
+                schemes = {
+                    dark = "carbonfox",
+                    light = "dayfox"
+                }
+            })
+        end
     }
     use {
         "nvim-treesitter/nvim-treesitter", run = ":TSUpdate"
@@ -49,8 +60,9 @@ return require("packer").startup(function(use)
             { "nvim-tree/nvim-web-devicons" }
         }
     }
-    use "jose-elias-alvarez/null-ls.nvim"
+    use "nvimtools/none-ls.nvim"
     use "tpope/vim-sleuth"
+    use "tpope/vim-surround"
 
     use "lewis6991/gitsigns.nvim"
     use "b0o/schemastore.nvim"

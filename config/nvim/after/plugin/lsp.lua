@@ -5,7 +5,7 @@ local cmp = require('cmp')
 local cmp_mappings = lsp.defaults.cmp_mappings({
     ['<C-Space>'] = cmp.mapping.complete(),
     ['<C-e>'] = cmp.mapping.abort(),
-    ['<CR>'] = cmp.mapping.confirm({select = true}),
+    ['<CR>'] = cmp.mapping.confirm({ select = true }),
 })
 
 lsp.preset("recommended")
@@ -15,7 +15,7 @@ lsp.setup_nvim_cmp({
         { name = 'path' },
         { name = 'git' },
         { name = "luasnip" },
-        { name = 'buffer', keyword_length = 2 },
+        { name = 'buffer',  keyword_length = 2 },
     },
     mapping = cmp_mappings
 })
@@ -39,6 +39,7 @@ lsp.configure("yamlls", {
         }
     }
 })
+
 lsp.setup()
 
 vim.diagnostic.config({
@@ -51,3 +52,5 @@ vim.diagnostic.config({
 })
 
 vim.keymap.set("n", "<leader>p", vim.lsp.buf.format)
+vim.keymap.set("n", "<leader>ca", vim.lsp.buf.code_action)
+vim.keymap.set("n", "<leader>r", vim.lsp.buf.rename)
