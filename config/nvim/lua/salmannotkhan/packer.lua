@@ -55,10 +55,24 @@ return require("packer").startup(function(use)
     }
 
     use {
-        "nvim-tree/nvim-tree.lua",
+        "nvim-neo-tree/neo-tree.nvim",
+        branch = "v3.x",
         requires = {
-            { "nvim-tree/nvim-web-devicons" }
-        }
+            "nvim-lua/plenary.nvim",
+            "nvim-tree/nvim-web-devicons",
+            "MunifTanjim/nui.nvim",
+            "3rd/image.nvim",
+        },
+        config = function ()
+            require("neo-tree").setup({
+                window = {
+                    mappings = {
+                        ["l"] = "open",
+                        ["h"] = "close_node"
+                    },
+                },
+            })
+        end
     }
     use "nvimtools/none-ls.nvim"
     use "tpope/vim-sleuth"
@@ -68,4 +82,5 @@ return require("packer").startup(function(use)
     use "b0o/schemastore.nvim"
 
     use "christoomey/vim-tmux-navigator"
+    use "chriskempson/vim-tomorrow-theme"
 end)

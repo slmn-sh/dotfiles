@@ -3,10 +3,10 @@
 if [[ "$(uname)" == 'Darwin' ]]; then
     brew tap homebrew/cask-fonts
     echo "Brewing packages"
-    brew install npm nodejs neovim fd ripgrep stow font-fira-code-nerd-font
+    brew install npm nodejs neovim fd ripgrep stow font-fira-code-nerd-font ghostty
 else
     echo "Installing packages"
-    sudo pacman -S --noconfirm zsh npm nvm pyenv neovim fd ripgrep stow ttf-firacode-nerd alacritty
+    sudo pacman -S --noconfirm zsh npm nvm neovim fd ripgrep stow ttf-firacode-nerd ghostty
     chsh -s $(which zsh)
 fi
 

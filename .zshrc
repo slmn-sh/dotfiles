@@ -7,7 +7,6 @@ ZSH_THEME="robbyrussell"
 plugins=(
     z
     git
-    python
     compleat
     nvm
     macos
@@ -23,9 +22,16 @@ zstyle ":omz:plugins:nvm" silent-autoload yes
 zstyle ":omz:plugins:nvm" lazy yes
 
 alias vim="nvim"
+alias vi="nvim"
 alias start="~/sessionizer.sh"
 
 source $ZSH/oh-my-zsh.sh
 
-_evalcache pyenv init -
-_evalcache pyenv virtualenv-init -
+# sst
+export PATH="$HOME/.jenv/bin:$PATH"
+eval "$(jenv init -)"
+
+. "$HOME/.cargo/env"
+
+# sst
+export PATH=/Users/salmannotkhan/.sst/bin:$PATH

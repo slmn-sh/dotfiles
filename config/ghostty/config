@@ -1,0 +1,5 @@
+theme = dark:carbonfox,light:tomorrow
+font-family = CaskaydiaCove Nerd Font
+font-size = 18
+quick-terminal-position = bottom
+window-padding-color = extend
