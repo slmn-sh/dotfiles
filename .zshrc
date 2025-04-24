@@ -27,11 +27,4 @@ alias start="~/sessionizer.sh"
 
 source $ZSH/oh-my-zsh.sh
 
-# sst
-export PATH="$HOME/.jenv/bin:$PATH"
-eval "$(jenv init -)"
-
 . "$HOME/.cargo/env"
-
-# sst
-export PATH=/Users/salmannotkhan/.sst/bin:$PATH
